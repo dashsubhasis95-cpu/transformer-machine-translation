@@ -140,15 +140,15 @@ How values carry actual semantic information
 Why residual connections are critical in deep networks
 How tensor shapes evolve inside attention
 
-##Tech used
+## Tech used
 Python
 PyTorch
 
-##References
+## References
 Attention Is All You Need — Vaswani et al.
 PyTorch documentation
 
-##Author
+## Author
 Subhasis Dash
 B.Tech student
 Learning Transformers for machine translation from first principles
