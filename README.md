@@ -18,8 +18,8 @@ My goals were to:
 - Learn why embeddings are scaled by '√d_model'
 - Understand what "Q · Kᵀ" represents
 - See how multiplying with 'V' gives meaningful word information
-- Clearly understand the role of **residual (skip) connections**
-- Track **tensor shapes** inside attention
+- Clearly understand the role of "residual (skip) connections"
+- Track "tensor shapes" inside attention
 
 ---
 
@@ -37,15 +37,15 @@ Embedding(x) * √d_model
 - Attention uses dot products (Q · Kᵀ)
 - Without scaling, dot-product values become too small
 - Small values entering softmax reduce learning effectiveness
-Scaling by √d_model keeps values stable and improves training behavior.
+- Scaling by √d_model keeps values stable and improves training behavior.
 
 ## Positional Encoding
 
 Transformers do not process tokens sequentially, so they do not know word order by default.
 
 Sinusoidal positional encoding is added to embeddings so that:
-     -Each position has a unique representation
-     -The model can learn the order of words in a sentence
+     - Each position has a unique representation
+     - The model can learn the order of words in a sentence
 
 ## Multi-Head Self-Attention (Intuition + Shapes)
 # Creating Q, K, and V
@@ -64,49 +64,51 @@ After splitting into heads:
 
 
  Resulting shape:
-
  (batch_size, num_heads, seq_len, seq_len)
 
 
 # Meaning:
-    Each word is compared with every other word
-    This step measures how strongly words are related
-    It answers the question:
-    “Which words should this word pay attention to?”
+    - Each word is compared with every other word
+    - This step measures how strongly words are related
+    - It answers the question:
+    - “Which words should this word pay attention to?”
 At this stage, this gives relationships, not information.
 
 # Softmax — Importance scores
 Softmax converts relationship scores into attention weights:
-   Higher weight → more important word
-   Lower weight → less important word
+   - Higher weight → more important word
+   - Lower weight → less important word
 
 #Multiply with V — Getting information
-    Attention = softmax(QKᵀ / √d_k) @ V
-    Output shape:
+    - Attention = softmax(QKᵀ / √d_k) @ V
+    - Output shape:
     (batch_size, num_heads, seq_len, d_k)
 
    # Why multiply with V:
-       Q · Kᵀ tells which words matter
-       V contains the actual information of each word
-       Multiplication mixes word information based on importance
+       - Q · Kᵀ tells which words matter
+       - V contains the actual information of each word
+       - Multiplication mixes word information based on importance
 
    #In simple terms:
-      QKᵀ → relationship
-      V → information
+      - QKᵀ → relationship
+      - V → information
 
 ## Residual Connections (Skip Connections)
 
 After each major sub-layer (attention and feed-forward), a residual connection is applied:
+
 Output = x + Sublayer(x)
+
 This is followed by layer normalization.
+
 Why residual connections are important:
-    They allow gradients to flow easily
-    Prevent vanishing gradient problems
-    Make deep Transformer stacks train stably
+    - They allow gradients to flow easily
+    - Prevent vanishing gradient problems
+    - Make deep Transformer stacks train stably
 
 Residual connections are used with:
-      Multi-head self-attention
-      Feed-forward network
+     - Multi-head self-attention
+     - Feed-forward network
 
 ## Encoder Block Structure
 Input
@@ -122,16 +124,16 @@ Multiple encoder blocks are stacked to form the complete encoder.
 ## Code structure
 Transformer/
 │
-├── model.py      # Transformer encoder implementation
-├── README.md
+├──  model.py      # Transformer encoder implementation
+├──  README.md
 
 
 All components are implemented manually to ensure clarity and deep understanding.
 
 ## Current status
-✅ Transformer encoder implemented
-🚧 Decoder (masked self-attention + encoder–decoder attention) coming next
-🚧 Training and translation inference to be added later
+- ✅ Transformer encoder implemented
+- 🚧 Decoder (masked self-attention + encoder–decoder attention) coming next
+- 🚧 Training and translation inference to be added later
 
 ## What I learned from this
 - Why embedding scaling is important
