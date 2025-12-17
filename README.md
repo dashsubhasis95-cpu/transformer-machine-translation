@@ -141,8 +141,8 @@ Why residual connections are critical in deep networks
 How tensor shapes evolve inside attention
 
 ## Tech used
-Python
-PyTorch
+# Python
+# PyTorch
 
 ## References
 Attention Is All You Need — Vaswani et al.
