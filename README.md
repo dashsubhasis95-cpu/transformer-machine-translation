@@ -1,8 +1,8 @@
 # Transformer-Machine_Translation
 
-This repository contains my **from-scratch implementation of the Transformer architecture for machine translation, based on the paper **“Attention Is All You Need”.
+This repository contains my "from-scratch implementation of the Transformer architecture for machine translation", based on the paper “Attention Is All You Need”.
 
-The project is being developed **step by step toward a full translation system.  
+The project is being developed "step by step toward a full translation system.  
 At the current stage, the "Transformer encoder is implemented first" to build a strong foundation before adding the decoder and training pipeline.
 
 ---
@@ -32,11 +32,11 @@ In the forward pass, the embedding output is multiplied by `√d_model`:
 
 Embedding(x) * √d_model
 
-Why this is done:
-Embedding values are usually small
-Attention uses dot products (Q · Kᵀ)
-Without scaling, dot-product values become too small
-Small values entering softmax reduce learning effectiveness
+# Why this is done:
+- Embedding values are usually small
+- Attention uses dot products (Q · Kᵀ)
+- Without scaling, dot-product values become too small
+- Small values entering softmax reduce learning effectiveness
 Scaling by √d_model keeps values stable and improves training behavior.
 
 ## Positional Encoding
