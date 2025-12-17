@@ -134,11 +134,15 @@ All components are implemented manually to ensure clarity and deep understanding
 🚧 Training and translation inference to be added later
 
 ## What I learned from this
-Why embedding scaling is important
-How attention models word relationships
-How values carry actual semantic information
-Why residual connections are critical in deep networks
-How tensor shapes evolve inside attention
+- Why embedding scaling is important
+
+- How attention models word relationships
+
+- How values carry actual semantic information
+
+- Why residual connections are critical in deep networks
+
+- How tensor shapes evolve inside attention
 
 ## Tech used
 Python
@@ -151,7 +155,9 @@ PyTorch documentation
 
 ## Author
 Subhasis Dash
+
 B.Tech student
+
 Learning Transformers for machine translation from first principles
 
 
